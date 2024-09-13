@@ -114,6 +114,9 @@ export default HeadSEO
 function replaceTemplateTags(string, templateTags = []) {
   let newString = string
 
+  // [TODO] Fix this validation
+  if (!string) return
+
   templateTags.map((v) => {
     newString = newString.replace(new RegExp(v.tag, 'g'), v.value)
   })
