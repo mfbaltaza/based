@@ -6,12 +6,12 @@ import Menu from '@components/menu'
 import Icon from '@components/icon'
 
 const Footer = ({ data = {} }) => {
-  const { blocks } = data
+  const { blocks } = data || {}
 
   return (
     <footer className="footer" role="contentinfo">
       <div className="footer--grid">
-        {blocks.map((block, key) => (
+        {blocks?.map((block, key) => (
           <div key={key} className="footer--block">
             {block.title && <p className="is-h3">{block.title}</p>}
 
