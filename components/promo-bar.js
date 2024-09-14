@@ -6,7 +6,7 @@ import { ConditionalWrapper } from '@lib/helpers'
 import CustomLink from '@components/link'
 
 const PromoBar = React.memo(({ data = {} }) => {
-  const { enabled, display, text, link } = data
+  const { enabled, display, text, link } = data || {}
   const router = useRouter()
 
   // bail if no display or text
