@@ -11,6 +11,8 @@ export const getModuleName = type => {
       return 'Marquee'
     case 'dividerPhoto':
       return 'Divider Photo'
+    case 'sample':
+      return 'Sample Component'
     default:
       return null
   }

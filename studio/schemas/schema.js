@@ -28,6 +28,7 @@ import dividerPhoto from './modules/divider-photo'
 import newsletter from './modules/newsletter'
 import productHero from './modules/product-hero'
 import collectionGrid from './modules/collection-grid'
+import sample from './modules/sample'
 
 // Object types
 import gridColumn from './objects/grid-column'
@@ -97,6 +98,7 @@ export default createSchema({
     newsletter,
     productHero,
     collectionGrid,
+    sample,
 
     /* ----------------------- */
     /* 3: Generic Object types */

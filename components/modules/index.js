@@ -6,6 +6,7 @@ import Marquee from './marquee'
 import DividerPhoto from './divider-photo'
 import ProductHero from './product-hero'
 import Collection from './collection-grid'
+import Sample from './sample'
 
 export const Module = ({
   index,
@@ -21,6 +22,7 @@ export const Module = ({
     dividerPhoto: DividerPhoto,
     productHero: ProductHero,
     collectionGrid: Collection,
+    sample: Sample
   }[data?._type] ?? <></>
 
   return (

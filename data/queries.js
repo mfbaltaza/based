@@ -218,6 +218,13 @@ export const modules = `
     reverse,
     pausable
   },
+   _type == 'sample' => {
+    _type,
+    _key,
+    content[]{
+      ${ptContent}
+    }
+},
   _type == 'dividerPhoto' => {
     _type,
     _key,
