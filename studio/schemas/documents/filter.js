@@ -27,15 +27,15 @@ export default {
       options: {
         list: [
           { title: 'Simple', value: ' ' },
-          { title: 'Swatch', value: 'swatch' }
-        ]
+          { title: 'Swatch', value: 'swatch' },
+        ],
       },
-      initialValue: ' '
+      initialValue: ' ',
     },
     {
       title: 'Title',
       name: 'title',
-      type: 'string'
+      type: 'string',
     },
     {
       title: 'Slug',
@@ -44,8 +44,8 @@ export default {
       description: 'required',
       options: {
         source: 'title',
-        maxLength: 30
-      }
+        maxLength: 30,
+      },
     },
     {
       title: 'Color',
@@ -54,14 +54,14 @@ export default {
       to: [{ type: 'solidColor' }],
       hidden: ({ parent }) => {
         return parent.type !== 'swatch'
-      }
-    }
+      },
+    },
   ],
   preview: {
     select: {
       title: 'title',
       type: 'type',
-      color: 'color.color'
+      color: 'color.color',
     },
     prepare({ title = 'Untitled', type, color }) {
       const displayType = type && type.trim() ? type : 'simple'
@@ -69,8 +69,8 @@ export default {
       return {
         title,
         subtitle: displayType,
-        media: getIcon(displayType, color?.hex.toUpperCase())
+        media: getIcon(displayType, color?.hex.toUpperCase()),
       }
-    }
-  }
+    },
+  },
 }

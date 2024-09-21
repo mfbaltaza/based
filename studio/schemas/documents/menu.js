@@ -10,7 +10,7 @@ export default {
     {
       title: 'Title',
       name: 'title',
-      type: 'string'
+      type: 'string',
     },
     {
       title: 'Slug',
@@ -19,27 +19,27 @@ export default {
       description: 'required',
       options: {
         source: 'title',
-        maxLength: 30
-      }
+        maxLength: 30,
+      },
     },
     {
       title: 'Nav Items',
       name: 'items',
       type: 'array',
-      of: [{ type: 'navPage' }, { type: 'navLink' }, { type: 'navDropdown' }]
-    }
+      of: [{ type: 'navPage' }, { type: 'navLink' }, { type: 'navDropdown' }],
+    },
   ],
   preview: {
     select: {
       title: 'title',
-      items: 'items'
+      items: 'items',
     },
     prepare({ title = 'Untitled', items = [] }) {
       return {
         title,
         subtitle: `${items.length} link(s)`,
-        media: List
+        media: List,
       }
-    }
-  }
+    },
+  },
 }

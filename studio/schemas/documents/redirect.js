@@ -16,7 +16,7 @@ export default {
           Do not include the full domain or leading slash. For example:{' '}
           <code>old-page</code>
         </>
-      )
+      ),
     },
     {
       title: 'To (slug)',
@@ -27,28 +27,28 @@ export default {
           Do not include the full domain or leading slash. For example:{' '}
           <code>new-page</code>
         </>
-      )
+      ),
     },
     {
       title: 'Is this a permanent redirect (301)?',
       name: 'isPermanent',
-      type: 'boolean'
-    }
+      type: 'boolean',
+    },
   ],
   initialValue: {
-    isPermanent: true
+    isPermanent: true,
   },
   preview: {
     select: {
       to: 'to',
       from: 'from',
-      isPermanent: 'isPermanent'
+      isPermanent: 'isPermanent',
     },
     prepare({ from, to, isPermanent }) {
       return {
         title: from && to ? `(${from}) → (${to})` : 'New Redirect',
-        subtitle: isPermanent ? '301' : '302'
+        subtitle: isPermanent ? '301' : '302',
       }
-    }
-  }
+    },
+  },
 }

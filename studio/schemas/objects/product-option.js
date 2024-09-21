@@ -9,12 +9,12 @@ export default {
     {
       title: 'Name',
       name: 'name',
-      type: 'string'
+      type: 'string',
     },
     {
       title: 'Position',
       name: 'position',
-      type: 'number'
+      type: 'number',
     },
     {
       title: 'Values',
@@ -22,8 +22,8 @@ export default {
       type: 'array',
       of: [{ type: 'string' }],
       options: {
-        layout: 'tags'
-      }
-    }
-  ]
+        layout: 'tags',
+      },
+    },
+  ],
 }

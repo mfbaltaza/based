@@ -8,7 +8,7 @@ import styles from './seo-preview.css'
 
 const builder = imageUrlBuilder(sanityClient)
 
-const urlFor = source => {
+const urlFor = (source) => {
   return builder.image(source)
 }
 
@@ -16,13 +16,13 @@ class FacebookShare extends React.PureComponent {
   static propTypes = {
     default: PropTypes.object,
     document: PropTypes.object,
-    width: PropTypes.number
+    width: PropTypes.number,
   }
 
   static defaultProps = {
     default: null,
     document: null,
-    width: 580
+    width: 580,
   }
 
   render() {
@@ -32,12 +32,12 @@ class FacebookShare extends React.PureComponent {
     const templateTags = [
       {
         tag: '{{page_title}}',
-        value: document.title
+        value: document.title,
       },
       {
         tag: '{{site_title}}',
-        value: defaultSEO?.siteTitle
-      }
+        value: defaultSEO?.siteTitle,
+      },
     ]
 
     const url = assemblePageUrl({ document, domain: defaultSEO?.siteURL })
@@ -45,7 +45,7 @@ class FacebookShare extends React.PureComponent {
 
     const shareTitle = replaceTemplateTags(
       seo?.shareTitle || defaultSEO?.shareTitle,
-      templateTags
+      templateTags,
     )
     const shareDesc = seo?.shareDesc || defaultSEO?.shareDesc
     const shareGraphic = seo?.shareGraphic || defaultSEO?.shareGraphic

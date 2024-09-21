@@ -6,10 +6,10 @@ import {
   FaSpotify,
   FaTwitter,
   FaYoutube,
-  FaGithub
+  FaGithub,
 } from 'react-icons/fa'
 
-const getIcon = icon => {
+const getIcon = (icon) => {
   switch (icon) {
     case 'Apple':
       return FaApple
@@ -38,7 +38,7 @@ export default {
   type: 'object',
   options: {
     columns: 2,
-    collapsible: false
+    collapsible: false,
   },
   fields: [
     {
@@ -54,27 +54,27 @@ export default {
           { title: 'Spotify', value: 'Spotify' },
           { title: 'Twitter', value: 'Twitter' },
           { title: 'YouTube', value: 'YouTube' },
-          { title: 'Github', value: 'Github' }
-        ]
-      }
+          { title: 'Github', value: 'Github' },
+        ],
+      },
     },
     {
       title: 'URL',
       name: 'url',
-      type: 'url'
-    }
+      type: 'url',
+    },
   ],
   preview: {
     select: {
       icon: 'icon',
-      url: 'url'
+      url: 'url',
     },
     prepare({ icon, url }) {
       return {
         title: icon,
         subtitle: url ? url : '(url not set)',
-        media: getIcon(icon)
+        media: getIcon(icon),
       }
-    }
-  }
+    },
+  },
 }

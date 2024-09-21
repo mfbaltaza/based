@@ -10,15 +10,15 @@ export default {
       title: 'Display Collection Grid?',
       name: 'active',
       type: 'boolean',
-      initialValue: true
-    }
+      initialValue: true,
+    },
   ],
   preview: {
     prepare() {
       return {
         title: 'Collection Grid',
-        subtitle: 'Displays the Collections’s associated products'
+        subtitle: 'Displays the Collections’s associated products',
       }
-    }
-  }
+    },
+  },
 }

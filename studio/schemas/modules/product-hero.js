@@ -10,15 +10,15 @@ export default {
       title: 'Display Product Hero?',
       name: 'active',
       type: 'boolean',
-      initialValue: true
-    }
+      initialValue: true,
+    },
   ],
   preview: {
     prepare() {
       return {
         title: 'Product Hero',
-        subtitle: 'Displays the Product’s gallery and form'
+        subtitle: 'Displays the Product’s gallery and form',
       }
-    }
-  }
+    },
+  },
 }

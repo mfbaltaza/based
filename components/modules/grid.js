@@ -13,7 +13,7 @@ const Grid = ({ data = {} }) => {
     size,
     justify = false,
     align = false,
-    start = false
+    start = false,
   ) => {
     const hasBreakpoint = breakpoint && breakpoint.trim()
     const colSpan = hasBreakpoint
@@ -31,7 +31,7 @@ const Grid = ({ data = {} }) => {
       colSpan,
       start && colStart,
       justify && colJustify,
-      align && colAlign
+      align && colAlign,
     )
   }
 
@@ -54,9 +54,9 @@ const Grid = ({ data = {} }) => {
                       size.width,
                       size.justify,
                       size.align,
-                      size.start
-                    )
-                  )
+                      size.start,
+                    ),
+                  ),
                 )}
               >
                 {blocks.map((block, key) => (

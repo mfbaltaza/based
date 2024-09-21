@@ -6,23 +6,23 @@ export default {
     {
       title: 'Name',
       name: 'name',
-      type: 'string'
+      type: 'string',
     },
     {
       title: 'Nickname',
       name: 'nickname',
-      type: 'string'
-    }
+      type: 'string',
+    },
   ],
   preview: {
     select: {
       name: 'name',
-      nickname: 'nickname'
+      nickname: 'nickname',
     },
     prepare({ name, nickname }) {
       return {
-        title: `${name} (${nickname})`
+        title: `${name} (${nickname})`,
       }
-    }
-  }
+    },
+  },
 }

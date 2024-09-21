@@ -138,18 +138,18 @@ export const pagesMenu = S.listItem()
                 `_type == "page" && !(_id in [
                   *[_type == "generalSettings"][0].home._ref,
                   *[_type == "generalSettings"][0].error._ref,
-                ]) && !(_id in path("drafts.**"))`
+                ]) && !(_id in path("drafts.**"))`,
               )
-              .child(documentId =>
+              .child((documentId) =>
                 S.document()
                   .documentId(documentId)
                   .schemaType('page')
-                  .views(standardViews)
+                  .views(standardViews),
               )
               .canHandleIntent(
                 (intent, { type }) =>
-                  ['create', 'edit'].includes(intent) && type === 'page'
-              )
+                  ['create', 'edit'].includes(intent) && type === 'page',
+              ),
           ),
         S.divider(),
         S.listItem()
@@ -158,17 +158,17 @@ export const pagesMenu = S.listItem()
           .child(
             S.documentTypeList('section')
               .title('Reusable Sections')
-              .child(documentId =>
+              .child((documentId) =>
                 S.document()
                   .documentId(documentId)
                   .schemaType('section')
-                  .views(standardViews)
+                  .views(standardViews),
               )
               .canHandleIntent(
                 (intent, { type }) =>
-                  ['create', 'edit'].includes(intent) && type === 'section'
-              )
-          )
-      ])
+                  ['create', 'edit'].includes(intent) && type === 'section',
+              ),
+          ),
+      ]),
   )
   .icon(Browser)

@@ -9,15 +9,15 @@ import sanityClient from 'part:@sanity/base/client'
 
 class SeoPreviews extends React.PureComponent {
   static propTypes = {
-    document: PropTypes.object
+    document: PropTypes.object,
   }
 
   static defaultProps = {
-    document: null
+    document: null,
   }
 
   state = {
-    defaultSEO: {}
+    defaultSEO: {},
   }
 
   constructor() {
@@ -38,11 +38,11 @@ class SeoPreviews extends React.PureComponent {
           "siteTitle": *[_type == "generalSettings"][0].siteTitle,
           "siteURL": *[_type == "generalSettings"][0].siteURL
         }
-      `
+      `,
       )
-      .then(seo => {
+      .then((seo) => {
         this.setState({
-          defaultSEO: seo || {}
+          defaultSEO: seo || {},
         })
       })
   }

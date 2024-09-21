@@ -10,8 +10,8 @@ export default {
     {
       title: '',
       name: 'sizes',
-      options: { columns: 2 }
-    }
+      options: { columns: 2 },
+    },
   ],
   fields: [
     {
@@ -34,8 +34,8 @@ export default {
             The "Justify" and "Align" options can help position the column
             within the grid.
           </>
-        )
-      }
+        ),
+      },
     },
     {
       title: 'Breakpoint',
@@ -49,11 +49,11 @@ export default {
           { title: 'SM (768px and up)', value: 'sm' },
           { title: 'MD (940px and up)', value: 'md' },
           { title: 'LG (1200px and up)', value: 'lg' },
-          { title: 'XL (1600px and up)', value: 'xl' }
-        ]
+          { title: 'XL (1600px and up)', value: 'xl' },
+        ],
       },
-      validation: Rule => Rule.required(),
-      fieldset: 'sizes'
+      validation: (Rule) => Rule.required(),
+      fieldset: 'sizes',
     },
     {
       title: 'Width',
@@ -73,11 +73,11 @@ export default {
           { title: '9', value: 9 },
           { title: '10', value: 10 },
           { title: '11', value: 11 },
-          { title: '12', value: 12 }
-        ]
+          { title: '12', value: 12 },
+        ],
       },
-      validation: Rule => Rule.required(),
-      fieldset: 'sizes'
+      validation: (Rule) => Rule.required(),
+      fieldset: 'sizes',
     },
     {
       title: 'Justify',
@@ -88,10 +88,10 @@ export default {
         list: [
           { title: 'Left', value: 'justify-self-start' },
           { title: 'Center', value: 'justify-self-center' },
-          { title: 'Right', value: 'justify-self-end' }
-        ]
+          { title: 'Right', value: 'justify-self-end' },
+        ],
       },
-      fieldset: 'sizes'
+      fieldset: 'sizes',
     },
     {
       title: 'Align',
@@ -102,10 +102,10 @@ export default {
         list: [
           { title: 'Top', value: 'self-start' },
           { title: 'Middle', value: 'self-center' },
-          { title: 'Bottom', value: 'self-end' }
-        ]
+          { title: 'Bottom', value: 'self-end' },
+        ],
       },
-      fieldset: 'sizes'
+      fieldset: 'sizes',
     },
     {
       title: 'Start (offset)',
@@ -125,17 +125,17 @@ export default {
           { title: '9', value: 9 },
           { title: '10', value: 10 },
           { title: '11', value: 11 },
-          { title: '12', value: 12 }
-        ]
+          { title: '12', value: 12 },
+        ],
       },
-      fieldset: 'sizes'
-    }
+      fieldset: 'sizes',
+    },
   ],
   preview: {
     select: {
       breakpoint: 'breakpoint',
       width: 'width',
-      start: 'start'
+      start: 'start',
     },
     prepare({ breakpoint, width, start }) {
       return {
@@ -146,8 +146,8 @@ export default {
             initials={breakpoint && breakpoint.trim() ? breakpoint : 'D'}
             size={1}
           />
-        )
+        ),
       }
-    }
-  }
+    },
+  },
 }

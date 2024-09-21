@@ -37,7 +37,7 @@ const PreviewAction = (props) => {
     onHandle: async () => {
       const localURL = 'http://localhost:3000'
       const remoteURL = await sanityClient.fetch(
-        '*[_type == "generalSettings"][0].siteURL'
+        '*[_type == "generalSettings"][0].siteURL',
       )
 
       const frontendURL =
@@ -46,7 +46,7 @@ const PreviewAction = (props) => {
       window.open(
         `${frontendURL}/api/preview?token=HULL&type=${props.type}&slug=${
           slug || ''
-        }`
+        }`,
       )
     },
   }
@@ -71,7 +71,7 @@ const ShopifyAction = ({ draft, published }) => {
 
       const localURL = 'http://localhost:3000'
       const remoteURL = await sanityClient.fetch(
-        '*[_type == "generalSettings"][0].siteURL'
+        '*[_type == "generalSettings"][0].siteURL',
       )
       const frontendURL =
         window.location.hostname === 'localhost' ? localURL : remoteURL

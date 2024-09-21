@@ -15,7 +15,7 @@ const Link = ({ link, children, ...rest }) => {
   const productCounts = useProductCount()
 
   const collectionCount = productCounts(
-    (isCollection && link.page?.slug) || 'all'
+    (isCollection && link.page?.slug) || 'all',
   )
 
   // External Link
@@ -50,8 +50,8 @@ const Link = ({ link, children, ...rest }) => {
           isHome || isShop
             ? `/${isShop ? 'shop' : ''}`
             : isStatic !== false
-            ? `/${isStatic}`
-            : `/${isDynamic ? `${isDynamic}/` : ''}${link.page?.slug}`
+              ? `/${isStatic}`
+              : `/${isDynamic ? `${isDynamic}/` : ''}${link.page?.slug}`
         }
         scroll={false}
       >

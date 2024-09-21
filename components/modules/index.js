@@ -22,7 +22,7 @@ export const Module = ({
     dividerPhoto: DividerPhoto,
     productHero: ProductHero,
     collectionGrid: Collection,
-    sample: Sample
+    sample: Sample,
   }[data?._type] ?? <></>
 
   return (

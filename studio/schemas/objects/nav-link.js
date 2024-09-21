@@ -10,29 +10,29 @@ export default {
       title: 'Title',
       name: 'title',
       type: 'string',
-      description: 'Display Text'
+      description: 'Display Text',
     },
     {
       title: 'URL',
       name: 'url',
       type: 'url',
       description: 'enter an external URL',
-      validation: Rule =>
+      validation: (Rule) =>
         Rule.uri({
-          scheme: ['http', 'https', 'mailto', 'tel']
-        })
-    }
+          scheme: ['http', 'https', 'mailto', 'tel'],
+        }),
+    },
   ],
   preview: {
     select: {
       title: 'title',
-      url: 'url'
+      url: 'url',
     },
     prepare({ title, url }) {
       return {
         title: title ?? url,
-        subtitle: title && url
+        subtitle: title && url,
       }
-    }
-  }
+    },
+  },
 }

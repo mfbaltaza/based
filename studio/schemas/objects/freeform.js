@@ -11,14 +11,14 @@ export default {
     {
       title: '',
       name: 'blockOptions',
-      options: { columns: 2 }
-    }
+      options: { columns: 2 },
+    },
   ],
   fields: [
     {
       title: ' ',
       name: 'content',
-      type: 'complexPortableText'
+      type: 'complexPortableText',
     },
     {
       title: 'Max Width',
@@ -40,10 +40,10 @@ export default {
           { title: '4XL (56rem)', value: 'max-w-4xl' },
           { title: '5XL (64rem)', value: 'max-w-5xl' },
           { title: '6XL (72rem)', value: 'max-w-6xl' },
-          { title: '7XL (80rem)', value: 'max-w-7xl' }
-        ]
+          { title: '7XL (80rem)', value: 'max-w-7xl' },
+        ],
       },
-      fieldset: 'blockOptions'
+      fieldset: 'blockOptions',
     },
     {
       title: 'Text Alignment',
@@ -56,21 +56,21 @@ export default {
           { title: 'Left', value: 'text-start' },
           { title: 'Center', value: 'text-center' },
           { title: 'Right', value: 'text-end' },
-          { title: 'Justify', value: 'text-justify' }
-        ]
+          { title: 'Justify', value: 'text-justify' },
+        ],
       },
-      fieldset: 'blockOptions'
-    }
+      fieldset: 'blockOptions',
+    },
   ],
   preview: {
     select: {
-      content: 'content.0'
+      content: 'content.0',
     },
     prepare({ content }) {
       return {
         title: 'Freeform',
-        subtitle: getPtPreview(content)
+        subtitle: getPtPreview(content),
       }
-    }
-  }
+    },
+  },
 }

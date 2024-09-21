@@ -7,20 +7,20 @@ export default {
   icon: Infinity,
   fields: [
     {
-        title: 'Content',
-        name: 'content',
-        type: 'complexPortableText'
-      },
+      title: 'Content',
+      name: 'content',
+      type: 'complexPortableText',
+    },
   ],
   preview: {
     select: {
-      text: 'content.0.children'
+      text: 'content.0.children',
     },
     prepare({ content }) {
       return {
         title: 'Sample',
-        subtitle: content && content[0]?.text
+        subtitle: content && content[0]?.text,
       }
-    }
-  }
+    },
+  },
 }

@@ -10,13 +10,13 @@ export default {
   fields: [customImage()],
   preview: {
     select: {
-      photo: 'photo'
+      photo: 'photo',
     },
     prepare({ photo }) {
       return {
         title: 'Divider Photo',
-        media: photo
+        media: photo,
       }
-    }
-  }
+    },
+  },
 }

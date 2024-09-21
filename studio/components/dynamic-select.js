@@ -25,33 +25,33 @@ const DynamicSelect = React.forwardRef((props, ref) => {
     if (!(options.from in document)) return null
 
     dynamicOptions = document[options.from]
-      .map(opt => {
+      .map((opt) => {
         // bail if we can't find the subfield
         if (!(options.joinWith in opt)) return null
 
         // if a subfield is a complex array
         if (options.joinWithData) {
-          return opt[options.joinWith].map(jOpt => {
+          return opt[options.joinWith].map((jOpt) => {
             return {
               title: `${opt[options.fromData.title]} - ${
                 jOpt[options.joinWithData.title]
               }`,
               value: `${opt[options.fromData.title]}:${
                 jOpt[options.joinWithData.value]
-              }`
+              }`,
             }
           })
         } else {
-          return opt[options.joinWith].map(val => {
+          return opt[options.joinWith].map((val) => {
             return {
               title: `${opt[options.fromData.title]} - ${val}`,
-              value: `${opt[options.fromData.title]}:${val}`
+              value: `${opt[options.fromData.title]}:${val}`,
             }
           })
         }
       })
       .flat(1)
-      .filter(x => x !== null)
+      .filter((x) => x !== null)
 
     // Map basic field array data
   } else {
@@ -59,23 +59,23 @@ const DynamicSelect = React.forwardRef((props, ref) => {
     if (!(options.from in document)) return null
 
     // map over the field to build our list of options
-    dynamicOptions = document[options.from].map(opt => ({
+    dynamicOptions = document[options.from].map((opt) => ({
       title: opt[options.fromData.title].toString(),
-      value: opt[options.fromData.value].toString()
+      value: opt[options.fromData.value].toString(),
     }))
   }
 
   // Let's make sure we include existing "list" values
   const selectOptions = [
     ...(options.list ? options.list : [{}]),
-    ...dynamicOptions
+    ...dynamicOptions,
   ]
 
   // find our currently active value
-  const currentItem = selectOptions.find(opt => opt.value === value)
+  const currentItem = selectOptions.find((opt) => opt.value === value)
 
   // Save the new value on change
-  const handleCustomFieldChange = option => {
+  const handleCustomFieldChange = (option) => {
     onChange(PatchEvent.from(set(option.value.toString())))
   }
 
@@ -89,7 +89,7 @@ const DynamicSelect = React.forwardRef((props, ref) => {
       <Select
         ref={ref}
         items={selectOptions}
-        onChange={evt => handleCustomFieldChange(evt)}
+        onChange={(evt) => handleCustomFieldChange(evt)}
         value={currentItem}
       />
     </FormField>

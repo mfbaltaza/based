@@ -11,14 +11,14 @@ export default {
     {
       type: 'string',
       name: 'horizontalRule',
-      inputComponent: HR
-    }
+      inputComponent: HR,
+    },
   ],
   preview: {
     prepare() {
       return {
-        title: 'Horizontal Rule'
+        title: 'Horizontal Rule',
       }
-    }
-  }
+    },
+  },
 }

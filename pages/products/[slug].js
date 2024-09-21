@@ -64,10 +64,10 @@ const Product = ({ data }) => {
 
   // find our activeVariantID ID
   const paramVariantID = activeParams.find(
-    (filter) => filter.name === 'variant'
+    (filter) => filter.name === 'variant',
   ).value
   const foundVariant = page.product.variants?.find(
-    (v) => v.id == paramVariantID
+    (v) => v.id == paramVariantID,
   )
   const activeVariantID = foundVariant ? paramVariantID : defaultVariantID
 
@@ -84,14 +84,14 @@ const Product = ({ data }) => {
         },
       ])
     },
-    [activeParams]
+    [activeParams],
   )
 
   // check our product inventory is still correct
   const { data: productInventory } = useSWR(
     ['/api/shopify/product-inventory', page.product.id],
     ([url, id]) => fetchInventory(url, id),
-    { errorRetryCount: 3 }
+    { errorRetryCount: 3 },
   )
 
   // rehydrate our product after inventory is fetched
@@ -104,7 +104,7 @@ const Product = ({ data }) => {
         variants: [
           ...page.product.variants.map((v) => {
             const newInventory = productInventory.variants.find(
-              (nv) => nv.id === v.id
+              (nv) => nv.id === v.id,
             )
             return newInventory ? { ...v, ...newInventory } : v
           }),
@@ -128,7 +128,7 @@ const Product = ({ data }) => {
               data={module}
               product={product}
               activeVariant={product.variants.find(
-                (v) => v.id == activeVariantID
+                (v) => v.id == activeVariantID,
               )}
               onVariantChange={updateVariant}
             />

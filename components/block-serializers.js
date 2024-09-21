@@ -53,7 +53,7 @@ export const blockSerializers = {
         return React.createElement(
           style,
           { className: hasButton ? 'has-btn' : null },
-          props.children
+          props.children,
         )
       }
 

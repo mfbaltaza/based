@@ -8,7 +8,7 @@ import { Stack } from '@sanity/ui'
 
 import { setIfMissing } from '@sanity/form-builder/PatchEvent'
 
-const isFunction = obj => !!(obj && obj.constructor && obj.call && obj.apply)
+const isFunction = (obj) => !!(obj && obj.constructor && obj.call && obj.apply)
 
 class ConditionalField extends React.PureComponent {
   static propTypes = {
@@ -17,16 +17,16 @@ class ConditionalField extends React.PureComponent {
       name: PropTypes.string.isRequired,
       fields: PropTypes.array.isRequired,
       options: PropTypes.shape({
-        hidden: PropTypes.func.isRequired
-      }).isRequired
+        hidden: PropTypes.func.isRequired,
+      }).isRequired,
     }).isRequired,
     level: PropTypes.number,
     value: PropTypes.shape({
-      _type: PropTypes.string
+      _type: PropTypes.string,
     }),
     onFocus: PropTypes.func.isRequired,
     onChange: PropTypes.func.isRequired,
-    onBlur: PropTypes.func.isRequired
+    onBlur: PropTypes.func.isRequired,
   }
 
   firstFieldInput = React.createRef()
@@ -59,7 +59,7 @@ class ConditionalField extends React.PureComponent {
           ) {
             return (
               context.filter(
-                item => item._key && item._key === current._key
+                (item) => item._key && item._key === current._key,
               )[0] || {}
             )
           }
@@ -85,7 +85,7 @@ class ConditionalField extends React.PureComponent {
 
     const condition =
       (isFunction(type.options.hidden) && type.options.hidden) ||
-      function() {
+      function () {
         return true
       }
 
@@ -116,7 +116,9 @@ class ConditionalField extends React.PureComponent {
               key={field.name}
               type={field.type}
               value={value && value[field.name]}
-              onChange={patchEvent => this.handleFieldChange(field, patchEvent)}
+              onChange={(patchEvent) =>
+                this.handleFieldChange(field, patchEvent)
+              }
               path={[field.name]}
               onFocus={onFocus}
               onBlur={onBlur}

@@ -16,18 +16,18 @@ export default {
         list: [{ title: 'All', value: '' }],
         from: 'options',
         fromData: { title: 'name' },
-        joinWith: 'values'
-      }
+        joinWith: 'values',
+      },
     },
     customImage({
       title: 'Thumbnail',
-      name: 'cartPhoto'
-    })
+      name: 'cartPhoto',
+    }),
   ],
   preview: {
     select: {
       cartPhoto: 'cartPhoto',
-      forOption: 'forOption'
+      forOption: 'forOption',
     },
     prepare({ cartPhoto, forOption }) {
       const option = forOption ? forOption.split(':') : null
@@ -36,8 +36,8 @@ export default {
           option && option.length > 1
             ? `${option[0]}: ${option[1]}`
             : 'All Variants',
-        media: cartPhoto ? cartPhoto : null
+        media: cartPhoto ? cartPhoto : null,
       }
-    }
-  }
+    },
+  },
 }

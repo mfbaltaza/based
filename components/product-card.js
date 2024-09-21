@@ -44,7 +44,7 @@ const ProductCard = React.forwardRef(
       className,
       onClick,
     },
-    ref
+    ref,
   ) => {
     if (!product) return null
 
@@ -53,14 +53,14 @@ const ProductCard = React.forwardRef(
         f.values.map((v) => ({
           name: f.name,
           value: v,
-        }))
+        })),
       ) || []
 
     // select the default variant based current active filters
     const defaultOption = activeFilterValues
       .map((filter) => {
         const currentFilter = product.filters.find(
-          (f) => f.slug === filter.value && f.forOption
+          (f) => f.slug === filter.value && f.forOption,
         )
 
         if (!currentFilter) return null
@@ -89,7 +89,7 @@ const ProductCard = React.forwardRef(
 
     // set active variant as default
     const [activeVariant, setActiveVariant] = useState(
-      defaultVariant ? defaultVariant : product.variants[0]
+      defaultVariant ? defaultVariant : product.variants[0],
     )
 
     // assign the new variant when options are changed
@@ -187,14 +187,14 @@ const ProductCard = React.forwardRef(
                       hideLabels
                       onChange={changeActiveVariant}
                     />
-                  )
+                  ),
               )}
             </div>
           )}
         </div>
       </m.div>
     )
-  }
+  },
 )
 
 export default ProductCard

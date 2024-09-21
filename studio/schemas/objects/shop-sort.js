@@ -7,7 +7,7 @@ export const sortTypes = [
   { title: 'Price: High to Low', value: 'priceDesc' },
   { title: 'Price: Low to High', value: 'priceAsc' },
   { title: 'Alpha: A – Z', value: 'alphaAsc' },
-  { title: 'Alpha: Z – A', value: 'alphaDesc' }
+  { title: 'Alpha: Z – A', value: 'alphaDesc' },
 ]
 
 export default {
@@ -16,14 +16,14 @@ export default {
   type: 'object',
   description: 'Display a sort dropdown on shop collection pages',
   options: {
-    collapsible: true
+    collapsible: true,
   },
   fields: [
     {
       title: 'Enable Sorting?',
       name: 'isActive',
       type: 'boolean',
-      initialValue: false
+      initialValue: false,
     },
     {
       title: 'Sort Options',
@@ -41,32 +41,32 @@ export default {
               name: 'type',
               type: 'string',
               options: {
-                list: sortTypes
+                list: sortTypes,
               },
-              validation: Rule => Rule.required()
+              validation: (Rule) => Rule.required(),
             },
             {
               title: 'Custom Title',
               name: 'title',
-              type: 'string'
-            }
+              type: 'string',
+            },
           ],
           preview: {
             select: {
               title: 'title',
-              type: 'type'
+              type: 'type',
             },
             prepare({ title, type }) {
-              const sortTitle = sortTypes.find(t => t.value === type).title
+              const sortTitle = sortTypes.find((t) => t.value === type).title
 
               return {
                 title: title || sortTitle,
-                subtitle: title ? sortTitle : ''
+                subtitle: title ? sortTitle : '',
               }
-            }
-          }
-        }
-      ]
-    }
-  ]
+            },
+          },
+        },
+      ],
+    },
+  ],
 }

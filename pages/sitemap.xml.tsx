@@ -21,11 +21,19 @@ const addUrls = async (smStream: SitemapStream) => {
   const allCollections = await getAllDocSlugs('collection')
 
   allCollections.map((collection) => {
-    smStream.write({ url: `/shop/${collection.slug}`, changefreq: 'weekly', priority: 0.8 })
+    smStream.write({
+      url: `/shop/${collection.slug}`,
+      changefreq: 'weekly',
+      priority: 0.8,
+    })
   })
-  
+
   allPages.map((page) => {
-    smStream.write({ url: `/${page.slug}`, changefreq: 'weekly', priority: 0.7 })
+    smStream.write({
+      url: `/${page.slug}`,
+      changefreq: 'weekly',
+      priority: 0.7,
+    })
   })
 }
 
@@ -35,8 +43,8 @@ export const getServerSideProps: GetServerSideProps = async ({ res, req }) => {
       props: {},
     }
   }
-  res.setHeader("Content-Type", "application/xml")
-  res.setHeader("Content-Encoding", "gzip")
+  res.setHeader('Content-Type', 'application/xml')
+  res.setHeader('Content-Encoding', 'gzip')
 
   // If our sitemap is cached, we write the cached sitemap, no query to the CMS.
   if (sitemap) {
@@ -46,7 +54,9 @@ export const getServerSideProps: GetServerSideProps = async ({ res, req }) => {
       props: {},
     }
   }
-  const smStream = new SitemapStream({ hostname: `https://${req.headers.host}/` })
+  const smStream = new SitemapStream({
+    hostname: `https://${req.headers.host}/`,
+  })
   const pipeline = smStream.pipe(createGzip())
 
   try {
@@ -54,18 +64,18 @@ export const getServerSideProps: GetServerSideProps = async ({ res, req }) => {
     smStream.write({ url: '/shop', changefreq: 'daily', priority: 0.9 })
     await addUrls(smStream)
     smStream.end()
-    
-    const resp = await streamToPromise(pipeline);
 
-    sitemap = resp;
+    const resp = await streamToPromise(pipeline)
 
-    res.write(resp);
-    res.end();
+    sitemap = resp
+
+    res.write(resp)
+    res.end()
   } catch (error) {
-    console.log(error);
-    res.statusCode = 500;
-    res.write("Could not generate sitemap.");
-    res.end();
+    console.log(error)
+    res.statusCode = 500
+    res.write('Could not generate sitemap.')
+    res.end()
   }
 
   return {

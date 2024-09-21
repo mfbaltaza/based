@@ -8,15 +8,15 @@ export default {
   icon: () => <Browser />,
   groups: [
     { title: 'Content', name: 'content', default: true },
-    { title: 'Settings', name: 'settings' }
+    { title: 'Settings', name: 'settings' },
   ],
   fields: [
     {
       name: 'title',
       title: 'Title',
       type: 'string',
-      validation: Rule => Rule.required(),
-      group: 'settings'
+      validation: (Rule) => Rule.required(),
+      group: 'settings',
     },
     {
       title: 'URL Slug',
@@ -25,10 +25,10 @@ export default {
       description: '(required)',
       options: {
         source: 'title',
-        maxLength: 96
+        maxLength: 96,
       },
-      validation: Rule => Rule.required(),
-      group: 'settings'
+      validation: (Rule) => Rule.required(),
+      group: 'settings',
     },
     {
       title: 'Overlay header with transparency?',
@@ -37,7 +37,7 @@ export default {
       description:
         'When activated the header will overlay the first content module with a transparent background and white text until scrolling is engaged.',
       initialValue: false,
-      group: 'settings'
+      group: 'settings',
     },
     {
       title: 'Page Content',
@@ -52,29 +52,29 @@ export default {
         {
           title: 'Reusable Section',
           type: 'reference',
-          to: [{ type: 'section' }]
-        }
+          to: [{ type: 'section' }],
+        },
       ],
-      group: 'content'
+      group: 'content',
     },
     {
       title: 'SEO / Share Settings',
       name: 'seo',
       type: 'seo',
-      group: 'settings'
-    }
+      group: 'settings',
+    },
   ],
   preview: {
     select: {
       title: 'title',
-      slug: 'slug'
+      slug: 'slug',
     },
     prepare({ title = 'Untitled', slug = {} }) {
       const path = `/${slug.current}`
       return {
         title,
-        subtitle: slug.current ? path : '(missing slug)'
+        subtitle: slug.current ? path : '(missing slug)',
       }
-    }
-  }
+    },
+  },
 }

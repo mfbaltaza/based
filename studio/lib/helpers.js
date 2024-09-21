@@ -1,7 +1,7 @@
 import React from 'react'
 import { Circle } from 'phosphor-react'
 
-export const getModuleName = type => {
+export const getModuleName = (type) => {
   switch (type) {
     case 'grid':
       return 'Content Grid'
@@ -18,8 +18,8 @@ export const getModuleName = type => {
   }
 }
 
-export const getTypeTitles = types => {
-  const typeNames = types.map(type => {
+export const getTypeTitles = (types) => {
+  const typeNames = types.map((type) => {
     switch (type) {
       case 'freeform':
         return 'Freeform'
@@ -35,7 +35,7 @@ export const getTypeTitles = types => {
   return typeNames.join(' + ')
 }
 
-export const getTypeSubtitle = block => {
+export const getTypeSubtitle = (block) => {
   switch (block._type) {
     case 'freeform':
       return getPtPreview(block?.content[0])
@@ -48,7 +48,7 @@ export const getTypeSubtitle = block => {
   }
 }
 
-export const getPtPreview = content => {
+export const getPtPreview = (content) => {
   switch (content._type) {
     case 'photo':
       return `Photo: ${content.alt}`
@@ -57,14 +57,14 @@ export const getPtPreview = content => {
   }
 }
 
-export const getStaticRoute = name => {
+export const getStaticRoute = (name) => {
   switch (name) {
     default:
       return false
   }
 }
 
-export const getDynamicRoute = name => {
+export const getDynamicRoute = (name) => {
   switch (name) {
     case 'collection':
       return 'shop'
@@ -75,14 +75,14 @@ export const getDynamicRoute = name => {
   }
 }
 
-export const getSwatch = color => {
+export const getSwatch = (color) => {
   return (
     <Circle
       color={color}
       weight="fill"
       style={{
         boxShadow: '0 0 0 1px rgba(255,255,255,.4), 0 0 0 1px rgba(0,0,0,.15)',
-        borderRadius: '50%'
+        borderRadius: '50%',
       }}
     />
   )
@@ -92,7 +92,7 @@ export const getSwatch = color => {
 export function replaceTemplateTags(string, templateTags = []) {
   let newString = string
 
-  templateTags.map(v => {
+  templateTags.map((v) => {
     newString = newString?.replace(new RegExp(v.tag, 'g'), v.value)
   })
 
@@ -110,28 +110,28 @@ export const assemblePageUrl = ({ document, domain }) => {
   return domain + (slug ? `/${slug.current}` : '')
 }
 
-export const decodeAssetUrl = id => {
+export const decodeAssetUrl = (id) => {
   const pattern = /^(?:image|file)-([a-f\d]+)-(?:(\d+x\d+)-)?(\w+)$/
   const [, assetId, dimensions, format] = pattern.exec(id)
 
   const [width, height] = dimensions
-    ? dimensions.split('x').map(v => parseInt(v, 10))
+    ? dimensions.split('x').map((v) => parseInt(v, 10))
     : []
 
   return {
     assetId,
     dimensions: { width, height },
-    format
+    format,
   }
 }
 
 export const excludeCurrentReferences = ({ parent }) => {
-  const addedRefs = parent?.map(ref => ref._ref).filter(Boolean)
+  const addedRefs = parent?.map((ref) => ref._ref).filter(Boolean)
 
   return {
     filter: '!(_id in $ids)',
     params: {
-      ids: addedRefs
-    }
+      ids: addedRefs,
+    },
   }
 }
