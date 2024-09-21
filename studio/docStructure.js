@@ -1,5 +1,3 @@
-import S from '@sanity/base/structure-builder'
-
 const singletons = [
   'generalSettings',
   'cookieSettings',
@@ -13,7 +11,7 @@ const singletons = [
 
 const shopify = ['product', 'productVariant']
 
-export default [
+export default (S) => [
   ...S.defaultInitialValueTemplateItems().filter(
     (doc) =>
       !singletons.includes(doc.spec.id) && !shopify.includes(doc.spec.id),

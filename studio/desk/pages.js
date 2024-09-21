@@ -1,5 +1,4 @@
 import React from 'react'
-import S from '@sanity/desk-tool/structure-builder'
 import sanityClient from 'part:@sanity/base/client'
 import { IntentLink, Link } from 'part:@sanity/base/router'
 
@@ -38,7 +37,7 @@ const EmptyNotice = ({ title, type, link, linkTitle }) => {
 }
 
 // Extract our home page
-const currentHomePage = S.listItem()
+const currentHomePage = (S) => S.listItem()
   .title('Home Page')
   .icon(House)
   .child(async () => {

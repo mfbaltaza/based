@@ -1,4 +1,3 @@
-import S from '@sanity/desk-tool/structure-builder'
 import sanityClient from 'part:@sanity/base/client'
 
 import { Copy, Gift, Sliders, ShoppingCart, LinkBreak } from 'phosphor-react'
@@ -28,7 +27,7 @@ const collectionsMenu = S.listItem()
       ),
   )
 
-const productsMenu = S.listItem()
+const productsMenu = (S) => S.listItem()
   .title('Products')
   .icon(Gift)
   .child(

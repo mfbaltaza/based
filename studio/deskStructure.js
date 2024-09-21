@@ -1,5 +1,3 @@
-import S from '@sanity/desk-tool/structure-builder'
-
 import { settingsMenu } from './desk/settings'
 import { pagesMenu } from './desk/pages'
 import { shopMenu } from './desk/shop'
@@ -29,7 +27,7 @@ const hiddenDocTypes = (listItem) =>
     'media.tag', // for media plugin
   ].includes(listItem.getId())
 
-export default () =>
+export default (S) =>
   S.list()
     .title('Website')
     .items([

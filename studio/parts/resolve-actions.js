@@ -1,16 +1,22 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import axios from 'axios'
 
-import sanityClient from 'part:@sanity/base/client'
-
-import defaultResolve, {
-  PublishAction,
-  DiscardChangesAction,
-  DeleteAction,
-} from 'part:@sanity/base/document-actions'
+import { createClient } from '@sanity/client'
 
 import { useToast } from '@sanity/ui'
 import { EyeOpenIcon, BasketIcon, SyncIcon } from '@sanity/icons'
+import { 
+  useClient, 
+  useCurrentUser,
+  definePlugin
+} from 'sanity'
+
+const sanityClient = createClient({
+  projectId: 'your-project-id',
+  dataset: 'your-dataset',
+  useCdn: false, // set to `true` to fetch from edge cache
+  apiVersion: '2023-05-03', // use current date (YYYY-MM-DD) to target the latest API version
+})
 
 const singletons = [
   'generalSettings',
@@ -37,7 +43,7 @@ const PreviewAction = (props) => {
     onHandle: async () => {
       const localURL = 'http://localhost:3000'
       const remoteURL = await sanityClient.fetch(
-        '*[_type == "generalSettings"][0].siteURL',
+        '*[_type == "generalSettings"][0].siteURL'
       )
 
       const frontendURL =
@@ -46,7 +52,7 @@ const PreviewAction = (props) => {
       window.open(
         `${frontendURL}/api/preview?token=HULL&type=${props.type}&slug=${
           slug || ''
-        }`,
+        }`
       )
     },
   }
@@ -56,6 +62,7 @@ const ShopifyAction = ({ draft, published }) => {
   const [isSyncing, setIsSyncing] = useState(false)
 
   const toast = useToast()
+  const client = useClient()
 
   return {
     label: isSyncing ? 'Syncing...' : 'Sync images to Shopify',
@@ -70,8 +77,8 @@ const ShopifyAction = ({ draft, published }) => {
       })
 
       const localURL = 'http://localhost:3000'
-      const remoteURL = await sanityClient.fetch(
-        '*[_type == "generalSettings"][0].siteURL',
+      const remoteURL = await client.fetch(
+        '*[_type == "generalSettings"][0].siteURL'
       )
       const frontendURL =
         window.location.hostname === 'localhost' ? localURL : remoteURL
@@ -94,7 +101,7 @@ const ShopifyAction = ({ draft, published }) => {
           } else {
             toast.push({
               status: 'success',
-              title: 'Photos sync’d to Shopify successfully!',
+              title: "Photos sync'd to Shopify successfully!",
             })
           }
         })
@@ -111,29 +118,42 @@ const ShopifyAction = ({ draft, published }) => {
   }
 }
 
-export default function resolveDocumentActions(props) {
-  const isSingle = singletons.indexOf(props.type) > -1
-  const canEditDelete = editAndDelete.indexOf(props.type) > -1
-  const canPreview = previews.indexOf(props.type) > -1
-  const isProduct = props.type === 'product'
+export const resolveDocumentActions = definePlugin((prev, context) => {
+  return (props) => {
+    const isSingle = singletons.indexOf(props.schemaType) > -1
+    const canEditDelete = editAndDelete.indexOf(props.schemaType) > -1
+    const canPreview = previews.indexOf(props.schemaType) > -1
+    const isProduct = props.schemaType === 'product'
 
-  if (isSingle) {
+    const defaultActions = prev(props)
+
+    if (isSingle) {
+      return [
+        ...defaultActions.filter(
+          (action) => 
+            action.action === 'publish' || 
+            action.action === 'discardChanges'
+        ),
+        ...(canPreview ? [PreviewAction] : []),
+      ]
+    }
+
+    if (canEditDelete) {
+      return [
+        ...defaultActions.filter(
+          (action) => 
+            action.action === 'publish' || 
+            action.action === 'discardChanges' ||
+            action.action === 'delete'
+        ),
+        ...(canPreview ? [PreviewAction] : []),
+        ...(isProduct ? [ShopifyAction] : []),
+      ]
+    }
+
     return [
-      PublishAction,
-      DiscardChangesAction,
-      ...(canPreview ? [PreviewAction] : []),
+      ...defaultActions,
+      ...(canPreview ? [PreviewAction] : [])
     ]
   }
-
-  if (canEditDelete) {
-    return [
-      PublishAction,
-      DiscardChangesAction,
-      DeleteAction,
-      ...(canPreview ? [PreviewAction] : []),
-      ...(isProduct ? [ShopifyAction] : []),
-    ]
-  }
-
-  return [...defaultResolve(props), ...(canPreview ? [PreviewAction] : [])]
-}
+})

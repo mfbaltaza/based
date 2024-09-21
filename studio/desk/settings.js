@@ -1,5 +1,3 @@
-import S from '@sanity/desk-tool/structure-builder'
-
 import {
   Gear,
   PaintBucket,
@@ -12,7 +10,7 @@ import {
   Shuffle,
 } from 'phosphor-react'
 
-export const settingsMenu = S.listItem()
+export const settingsMenu = (S) => S.listItem()
   .title('Settings')
   .child(
     S.list()

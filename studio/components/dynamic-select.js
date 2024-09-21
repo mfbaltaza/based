@@ -1,26 +1,17 @@
 import React from 'react'
-import Select from 'part:@sanity/components/selects/default'
-import FormField from 'part:@sanity/components/formfields/default'
-import { withDocument } from 'part:@sanity/form-builder'
-import PatchEvent, { set } from 'part:@sanity/form-builder/patch-event'
+import { Select } from '@sanity/ui'
+import { FormField } from '@sanity/base/components'
+import { useFormValue, set, unset } from 'sanity'
 
 const DynamicSelect = React.forwardRef((props, ref) => {
-  const { document, onChange, type, value } = props
-  const { title, description, level, options } = type // details about the field
+  const { onChange, type, value } = props
+  const { title, description, options } = type
+  const document = useFormValue([])
 
   let dynamicOptions = []
 
   // are we joining from a subfield?
   if (options.joinWith) {
-    /*  ------------------------------------------------------------ */
-    /*  1. Map over the main array field (from)
-    /*  2. Map over the subfield (joinWith)
-    /*  3. build our array object
-    /*    - Use the main array field title (fromData -> title)
-    /*    - store that with the subfield value (joinWith), 
-    /*      or the subfield title and value (joinWith -> title)
-    /*  ------------------------------------------------------------ */
-
     // bail if we can't find the from field
     if (!(options.from in document)) return null
 
@@ -76,24 +67,22 @@ const DynamicSelect = React.forwardRef((props, ref) => {
 
   // Save the new value on change
   const handleCustomFieldChange = (option) => {
-    onChange(PatchEvent.from(set(option.value.toString())))
+    onChange(option.value ? set(option.value.toString()) : unset())
   }
 
   return (
     <FormField
-      label={title}
-      level={level}
-      legend={title}
+      title={title}
       description={description}
     >
       <Select
         ref={ref}
-        items={selectOptions}
-        onChange={(evt) => handleCustomFieldChange(evt)}
-        value={currentItem}
+        options={selectOptions}
+        onChange={handleCustomFieldChange}
+        value={currentItem?.value}
       />
     </FormField>
   )
 })
 
-export default withDocument(DynamicSelect)
+export default DynamicSelect
