@@ -8,7 +8,7 @@ import styles from './seo-preview.css'
 
 const builder = imageUrlBuilder(sanityClient)
 
-const urlFor = source => {
+const urlFor = (source) => {
   return builder.image(source)
 }
 
@@ -16,20 +16,20 @@ const author = {
   name: 'Nick DiMatteo',
   handle: 'ndimatteo',
   image:
-    'https://pbs.twimg.com/profile_images/1484424879265005569/3O5R2NCp_400x400.jpg'
+    'https://pbs.twimg.com/profile_images/1484424879265005569/3O5R2NCp_400x400.jpg',
 }
 
 class TwitterCard extends React.PureComponent {
   static propTypes = {
     default: PropTypes.object,
     document: PropTypes.object,
-    width: PropTypes.number
+    width: PropTypes.number,
   }
 
   static defaultProps = {
     default: null,
     document: null,
-    width: 580
+    width: 580,
   }
 
   render() {
@@ -39,12 +39,12 @@ class TwitterCard extends React.PureComponent {
     const templateTags = [
       {
         tag: '{{page_title}}',
-        value: document.title
+        value: document.title,
       },
       {
         tag: '{{site_title}}',
-        value: defaultSEO?.siteTitle
-      }
+        value: defaultSEO?.siteTitle,
+      },
     ]
 
     const url = assemblePageUrl({ document, domain: defaultSEO?.siteURL })
@@ -52,7 +52,7 @@ class TwitterCard extends React.PureComponent {
 
     const shareTitle = replaceTemplateTags(
       seo?.shareTitle || defaultSEO?.shareTitle,
-      templateTags
+      templateTags,
     )
     const shareDesc = seo?.shareDesc || defaultSEO?.shareDesc
     const shareGraphic = seo?.shareGraphic || defaultSEO?.shareGraphic
@@ -69,9 +69,7 @@ class TwitterCard extends React.PureComponent {
                     className={styles.tweetAuthorAvatar}
                     src={
                       author && typeof author.image === 'object'
-                        ? urlFor(author.image)
-                            .width(300)
-                            .url()
+                        ? urlFor(author.image).width(300).url()
                         : author.image
                     }
                   />

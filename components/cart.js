@@ -52,7 +52,7 @@ const Cart = ({ data }) => {
       const buildCheckoutLink = shop.storeURL
         ? checkoutURL.replace(
             /^(?:https?:\/\/)?(?:[^@\/\n]+@)?(?:www\.)?([^:\/?\n]+)/g,
-            shop.storeURL
+            shop.storeURL,
           )
         : checkoutURL
       setCheckoutLink(buildCheckoutLink)

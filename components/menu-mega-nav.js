@@ -125,7 +125,10 @@ export const MegaDropdownButton = ({ title, id }) => {
 
   return (
     <button
-      className={cx('mega-toggle', { 'is-open': isActive })}
+      className={cx(
+        'mega-toggle block bg-transparent p-20 font-inherit text-9 font-semibold uppercase leading-150',
+        { 'is-open': isActive },
+      )}
       aria-expanded={isActive}
       aria-controls={`meganav-${id}`}
       onClick={() => toggleMegaNav(!isActive ? true : 'toggle', id)}

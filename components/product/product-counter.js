@@ -91,7 +91,7 @@ const ProductCounter = React.memo(
         </button>
       </div>
     )
-  }
+  },
 )
 
 export default ProductCounter

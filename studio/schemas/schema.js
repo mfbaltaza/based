@@ -130,6 +130,6 @@ export default createSchema({
     accordion,
     productCard,
 
-    participant
-  ])
+    participant,
+  ]),
 })

@@ -6,7 +6,7 @@ export default {
     {
       title: 'Enable Promo Bar?',
       name: 'enabled',
-      type: 'boolean'
+      type: 'boolean',
     },
     {
       title: 'Display Location',
@@ -15,25 +15,25 @@ export default {
       options: {
         list: [
           { title: 'All Pages', value: 'all' },
-          { title: 'Home Page only', value: 'home' }
-        ]
+          { title: 'Home Page only', value: 'home' },
+        ],
       },
       description: 'Choose where the promo bar is displayed',
       initialValue: 'all',
       hidden: ({ parent }) => !parent.enabled,
-      validation: Rule =>
+      validation: (Rule) =>
         Rule.custom((field, context) => {
           return context.parent.enabled && field === undefined
             ? 'Display Location must be set when promo bar is enabled'
             : true
-        })
+        }),
     },
     {
       title: 'Text',
       name: 'text',
       type: 'string',
       description: 'The text to show on the banner',
-      hidden: ({ parent }) => !parent.enabled
+      hidden: ({ parent }) => !parent.enabled,
     },
     {
       title: 'Link',
@@ -41,14 +41,14 @@ export default {
       type: 'reference',
       to: [{ type: 'page' }, { type: 'collection' }, { type: 'product' }],
       description: '(optional) Select a page to link the promo banner to',
-      hidden: ({ parent }) => !parent.enabled
-    }
+      hidden: ({ parent }) => !parent.enabled,
+    },
   ],
   preview: {
     prepare() {
       return {
-        title: 'Promo Bar Settings'
+        title: 'Promo Bar Settings',
       }
-    }
-  }
+    },
+  },
 }

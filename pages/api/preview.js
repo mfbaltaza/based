@@ -15,13 +15,13 @@ export default function handler(req, res) {
     { token: process.env.SANITY_API_TOKEN },
     {
       maxAge: 20,
-    }
+    },
   )
 
   // Redirect to the associated page
   res.redirect(
     isStatic
       ? `/${isStatic}`
-      : `/${isDynamic ? `${isDynamic}/` : ''}${req.query.slug}`
+      : `/${isDynamic ? `${isDynamic}/` : ''}${req.query.slug}`,
   )
 }

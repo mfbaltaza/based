@@ -29,7 +29,7 @@ const Icon = styled.div`
   margin: -0.75rem auto;
   color: white;
 
-  ${props =>
+  ${(props) =>
     props.isLogin &&
     css`
       display: block;

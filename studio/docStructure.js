@@ -8,13 +8,14 @@ const singletons = [
   'footerSettings',
   'shopSettings',
   'seoSettings',
-  'media.tag' // for media plugin
+  'media.tag', // for media plugin
 ]
 
 const shopify = ['product', 'productVariant']
 
 export default [
   ...S.defaultInitialValueTemplateItems().filter(
-    doc => !singletons.includes(doc.spec.id) && !shopify.includes(doc.spec.id)
-  )
+    (doc) =>
+      !singletons.includes(doc.spec.id) && !shopify.includes(doc.spec.id),
+  ),
 ]

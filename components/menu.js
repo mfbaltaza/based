@@ -13,7 +13,7 @@ const Menu = ({ items, useMegaNav, hasFocus = true, onClick, ...rest }) => {
   if (!items) return null
 
   return (
-    <ul {...rest}>
+    <ul className="flex" {...rest}>
       {items.map((item, key) => {
         const isDropdown = !!item.dropdownItems
         const isStatic = getStaticRoute(item.page?.type)

@@ -16,8 +16,8 @@ export default {
         list: [{ title: 'All', value: '' }],
         from: 'options',
         fromData: { title: 'name' },
-        joinWith: 'values'
-      }
+        joinWith: 'values',
+      },
     },
     {
       title: 'Gallery Photo(s)',
@@ -25,14 +25,14 @@ export default {
       type: 'array',
       of: [customImage()],
       options: {
-        layout: 'grid'
-      }
-    }
+        layout: 'grid',
+      },
+    },
   ],
   preview: {
     select: {
       photos: 'photos',
-      forOption: 'forOption'
+      forOption: 'forOption',
     },
     prepare({ photos, forOption }) {
       const option = forOption ? forOption.split(':') : null
@@ -41,8 +41,8 @@ export default {
           option && option.length > 1
             ? `${option[0]}: ${option[1]}`
             : 'All Variants',
-        media: photos ? photos[0] : null
+        media: photos ? photos[0] : null,
       }
-    }
-  }
+    },
+  },
 }

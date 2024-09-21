@@ -45,20 +45,20 @@ const Header = ({ data = {}, isTransparent, onSetup = () => {} }) => {
   return (
     <>
       <PromoBar data={promo} />
-      <header className="sticky top-0 inset-x-0 z-5">
+      <header className="sticky inset-x-0 top-0 z-5">
         <div ref={headerRef} className="relative">
-          <div className="relative z-2 p-[16px] sm:py-[12px] sm:px-[40px] bg-pageBG h-[72px] sm:h-[96px]">
-            <div className="flex flex-row items-center relative z-3">
+          <div className="relative z-2 h-[72px] bg-pageBG p-[16px] sm:h-[96px] sm:px-[40px] sm:py-[12px]">
+            <div className="relative z-3 flex h-full flex-row items-center">
               <HeaderLogo router={router} menuDesktop={menuDesktop} />
               <nav
-                className={`main-navigation flex-1 flex ${
+                className={`main-navigation flex flex-1 ${
                   menuDesktop?.positionMenu === 'center'
-                    ? 'sm:justify-center sm:order-3'
+                    ? 'sm:order-3 sm:justify-center'
                     : menuDesktop?.positionMenu === 'left'
-                    ? 'sm:justify-start sm:order-1'
-                    : menuDesktop?.positionMenu === 'right'
-                    ? 'sm:justify-end sm:order-3'
-                    : 'sm:justify-center sm:order-2'
+                      ? 'sm:order-1 sm:justify-start'
+                      : menuDesktop?.positionMenu === 'right'
+                        ? 'sm:order-3 sm:justify-end'
+                        : 'sm:order-2 sm:justify-center'
                 }`}
                 role="navigation"
               >

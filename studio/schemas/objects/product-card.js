@@ -10,17 +10,17 @@ export default {
       title: 'Product',
       name: 'product',
       type: 'reference',
-      to: [{ type: 'product' }]
-    }
+      to: [{ type: 'product' }],
+    },
   ],
   preview: {
     select: {
-      title: 'product.title'
+      title: 'product.title',
     },
     prepare({ title }) {
       return {
-        title: title || 'Product Card'
+        title: title || 'Product Card',
       }
-    }
-  }
+    },
+  },
 }

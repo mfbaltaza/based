@@ -9,17 +9,17 @@ export default {
     {
       title: 'Name',
       name: 'name',
-      type: 'string'
+      type: 'string',
     },
     {
       title: 'Value',
       name: 'value',
-      type: 'string'
+      type: 'string',
     },
     {
       title: 'Position',
       name: 'position',
-      type: 'number'
-    }
-  ]
+      type: 'number',
+    },
+  ],
 }

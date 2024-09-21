@@ -19,7 +19,7 @@ const ProductForm = ({ product, activeVariant, onVariantChange }) => {
               activeVariant={activeVariant}
               onChange={onVariantChange}
             />
-          )
+          ),
       )}
     </div>
   )

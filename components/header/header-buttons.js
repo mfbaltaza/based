@@ -3,19 +3,17 @@ import Icon from '@components/icon'
 
 const HeaderButtons = ({ toggleCart, menuDesktop }) => (
   <div
-    className={`flex flex-row items-center gap-[10px] sm:gap-[20px] z-3 flex-1 justify-end
-       ${
-         menuDesktop?.positionMenu === 'center '
-           ? 'sm:justify-end sm:order-3'
-           : menuDesktop?.positionMenu === 'left'
-           ? 'sm:justify-end sm:order-2'
-           : menuDesktop?.positionMenu === 'right'
-           ? 'sm:justify-start sm:order-1'
-           : 'sm:justify-end sm:order-3'
-       }
-      `}
+    className={`z-3 flex flex-1 flex-row items-center justify-end gap-[10px] sm:gap-[20px] ${
+      menuDesktop?.positionMenu === 'center'
+        ? 'sm:order-3 sm:justify-end'
+        : menuDesktop?.positionMenu === 'left'
+          ? 'sm:order-2 sm:justify-end'
+          : menuDesktop?.positionMenu === 'right'
+            ? 'sm:order-1 sm:justify-start'
+            : 'sm:order-3 sm:justify-end'
+    } `}
   >
-    <button className="hover:bg-blue-800 w-[36px] h-[36px] sm:w-[50px] sm:h-[50px] p-[7px] sm:p-[9px] border rounded-full bg-transparent flex items-center">
+    <button className="hover:bg-blue-800 flex h-[36px] w-[36px] items-center rounded-full border bg-transparent p-[7px] sm:h-[50px] sm:w-[50px] sm:p-[9px]">
       <Icon
         name="United-Kingdom"
         viewBox="0 0 32 32"
@@ -23,7 +21,7 @@ const HeaderButtons = ({ toggleCart, menuDesktop }) => (
         fill="none"
       />
     </button>
-    <button className="w-[36px] h-[36px] sm:w-[50px] sm:h-[50px] p-[7px] sm:p-[12px] border rounded-full bg-transparent flex items-center">
+    <button className="flex h-[36px] w-[36px] items-center rounded-full border bg-transparent p-[7px] sm:h-[50px] sm:w-[50px] sm:p-[12px]">
       <Icon
         name="User-Header"
         viewBox="0 0 24 24"
@@ -33,7 +31,7 @@ const HeaderButtons = ({ toggleCart, menuDesktop }) => (
     </button>
     <button
       onClick={() => toggleCart()}
-      className="w-[36px] h-[36px] sm:w-[50px] sm:h-[50px] p-[7px] sm:p-[12px] border rounded-full bg-transparent flex items-center"
+      className="flex h-[36px] w-[36px] items-center rounded-full border bg-transparent p-[7px] sm:h-[50px] sm:w-[50px] sm:p-[12px]"
     >
       <Icon
         name="Header-Shop"

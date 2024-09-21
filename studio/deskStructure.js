@@ -5,7 +5,7 @@ import { pagesMenu } from './desk/pages'
 import { shopMenu } from './desk/shop'
 import { menusMenu } from './desk/menus'
 
-const hiddenDocTypes = listItem =>
+const hiddenDocTypes = (listItem) =>
   ![
     'page',
     'section',
@@ -26,7 +26,7 @@ const hiddenDocTypes = listItem =>
     'menu',
     'siteSettings',
     'redirect',
-    'media.tag' // for media plugin
+    'media.tag', // for media plugin
   ].includes(listItem.getId())
 
 export default () =>
@@ -42,5 +42,5 @@ export default () =>
       settingsMenu,
 
       // Filter out docs already defined above
-      ...S.documentTypeListItems().filter(hiddenDocTypes)
+      ...S.documentTypeListItems().filter(hiddenDocTypes),
     ])

@@ -14,15 +14,15 @@ const MobileNav = ({
       <div>
         <button
           onClick={() => toggleMobileNav(!isMobileNavOpen)}
-          className={`sm:hidden absolute inset-y-0 left-0 z-6 clean-btn bg-transparent ${
-            isMobileNavOpen ? 'text-pageText is-open' : ''
+          className={`clean-btn absolute inset-y-0 left-0 z-6 bg-transparent sm:hidden ${
+            isMobileNavOpen ? 'is-open text-pageText' : ''
           }`}
           aria-expanded={isMobileNavOpen}
           aria-controls="mobile-nav"
           aria-label="Toggle Menu"
         >
-          <span className="relative flex flex-col items-center justify-center mx-auto w-30 transition-menu">
-            <span className="icon-line block relative w-full h-0 border-t transition-border duration-200 delay-200 linear"></span>
+          <span className="transition-menu relative mx-auto flex w-30 flex-col items-center justify-center">
+            <span className="icon-line transition-border linear relative block h-0 w-full border-t delay-200 duration-200"></span>
           </span>
         </button>
 
@@ -31,14 +31,14 @@ const MobileNav = ({
           animate={isMobileNavOpen ? 'show' : 'hide'}
           variants={{ show: { x: '0%' }, hide: { x: '-100%' } }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="menu-mobile fixed top-0 left-0 w-full max-w-[420px] h-screen z-5 flex flex-col bg-pageBG text-pageText"
+          className="menu-mobile fixed left-0 top-0 z-5 flex h-screen w-full max-w-[420px] flex-col bg-pageBG text-pageText"
           style={{
             height: 'calc(var(--vh, 1vh) * 100)',
             willChange: 'transform',
           }}
         >
           <div
-            className="flex-1 flex flex-col overflow-y-scroll px-16 pb-16 mobile-navigation"
+            className="mobile-navigation flex flex-1 flex-col overflow-y-scroll px-16 pb-16"
             style={{ paddingTop: `calc(var(--headerHeight, 10rem) + 2.5rem)` }}
           >
             <div className="menu-primary">
@@ -61,7 +61,7 @@ const MobileNav = ({
         </m.div>
 
         <div
-          className={`fixed inset-0 z-4 bg-black bg-opacity-40 pointer-events-none opacity-0 ${
+          className={`pointer-events-none fixed inset-0 z-4 bg-black bg-opacity-40 opacity-0 ${
             isMobileNavOpen ? 'pointer-events-auto opacity-100' : ''
           }`}
           onClick={() => toggleMobileNav(false)}

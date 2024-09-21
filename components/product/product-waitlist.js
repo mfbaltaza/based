@@ -98,7 +98,7 @@ const Waitlist = ({ variant, klaviyo }) => {
               {...register('fullname')}
             />
             <div className="control--group is-inline">
-              <div className={`control${errors.email ? ' has-error' : ''}`}>
+              <div className={`control${errors.email ? 'has-error' : ''}`}>
                 <label htmlFor="email" className="control--label">
                   Email Address
                 </label>
@@ -131,7 +131,7 @@ const Waitlist = ({ variant, klaviyo }) => {
               <button
                 type="submit"
                 className={`btn is-primary is-large is-block${
-                  submitting ? ' is-loading' : ''
+                  submitting ? 'is-loading' : ''
                 }`}
                 disabled={submitting}
               >

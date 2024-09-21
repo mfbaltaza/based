@@ -9,7 +9,7 @@ import {
   Cookie,
   FlagBanner,
   GlobeSimple,
-  Shuffle
+  Shuffle,
 } from 'phosphor-react'
 
 export const settingsMenu = S.listItem()
@@ -24,7 +24,7 @@ export const settingsMenu = S.listItem()
             S.editor()
               .id('generalSettings')
               .schemaType('generalSettings')
-              .documentId('generalSettings')
+              .documentId('generalSettings'),
           )
           .icon(Gear),
         S.divider(),
@@ -39,7 +39,7 @@ export const settingsMenu = S.listItem()
             S.editor()
               .id('shopSettings')
               .schemaType('shopSettings')
-              .documentId('shopSettings')
+              .documentId('shopSettings'),
           )
           .icon(ShoppingCart),
         S.divider(),
@@ -49,7 +49,7 @@ export const settingsMenu = S.listItem()
             S.editor()
               .id('headerSettings')
               .schemaType('headerSettings')
-              .documentId('headerSettings')
+              .documentId('headerSettings'),
           )
           .icon(NavigationArrow),
         S.listItem()
@@ -58,7 +58,7 @@ export const settingsMenu = S.listItem()
             S.editor()
               .id('footerSettings')
               .schemaType('footerSettings')
-              .documentId('footerSettings')
+              .documentId('footerSettings'),
           )
           .icon(AnchorSimple),
         S.divider(),
@@ -68,7 +68,7 @@ export const settingsMenu = S.listItem()
             S.editor()
               .id('cookieSettings')
               .schemaType('cookieSettings')
-              .documentId('cookieSettings')
+              .documentId('cookieSettings'),
           )
           .icon(Cookie),
         S.listItem()
@@ -77,7 +77,7 @@ export const settingsMenu = S.listItem()
             S.editor()
               .id('promoSettings')
               .schemaType('promoSettings')
-              .documentId('promoSettings')
+              .documentId('promoSettings'),
           )
           .icon(FlagBanner),
         S.divider(),
@@ -87,13 +87,13 @@ export const settingsMenu = S.listItem()
             S.editor()
               .id('seoSettings')
               .schemaType('seoSettings')
-              .documentId('seoSettings')
+              .documentId('seoSettings'),
           )
           .icon(GlobeSimple),
         S.listItem()
           .title('Redirects')
           .child(S.documentTypeList('redirect').title('Redirects'))
-          .icon(Shuffle)
-      ])
+          .icon(Shuffle),
+      ]),
   )
   .icon(Gear)

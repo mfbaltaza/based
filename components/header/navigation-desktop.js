@@ -2,7 +2,7 @@ import React from 'react'
 import Menu from '@components/menu'
 
 const DesktopNav = ({ menuDesktop, toggleMegaNav }) => (
-  <div className="hidden sm:flex justify-between items-center inset-0">
+  <div className="inset-0 hidden items-center justify-between sm:flex">
     <div className="flex items-center">
       {menuDesktop?.items && (
         <Menu

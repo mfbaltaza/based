@@ -16,12 +16,12 @@ const CollectionFilterChips = ({
       f.values.map((v) => ({
         name: f.name,
         value: v,
-      }))
+      })),
     ) || []
 
   const isOpen = useMemo(
     () => (filtersTotal > 0 ? true : false),
-    [filtersTotal]
+    [filtersTotal],
   )
 
   return (

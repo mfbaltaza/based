@@ -9,14 +9,14 @@ export default {
   groups: [
     { title: 'Content', name: 'content', default: true },
     { title: 'Settings', name: 'settings' },
-    { title: 'Shopify Data', name: 'shopify', icon: CloudArrowDown }
+    { title: 'Shopify Data', name: 'shopify', icon: CloudArrowDown },
   ],
   fieldsets: [
     {
       title: '',
       name: '2up',
-      options: { columns: 2 }
-    }
+      options: { columns: 2 },
+    },
   ],
   icon: () => <Copy />,
   fields: [
@@ -26,13 +26,13 @@ export default {
       type: 'string',
       description:
         'Shown where variant names appear (for example: Above the product title in the cart)',
-      group: 'content'
+      group: 'content',
     },
     {
       title: 'SEO / Share Settings',
       name: 'seo',
       type: 'seo',
-      group: 'settings'
+      group: 'settings',
     },
     {
       name: 'shopifyNote',
@@ -40,9 +40,9 @@ export default {
       options: {
         icon: ArrowsClockwise,
         message:
-          'This data is automatically pulled in from your connected Shopify account. To make changes to this data please edit the product on Shopify directly.'
+          'This data is automatically pulled in from your connected Shopify account. To make changes to this data please edit the product on Shopify directly.',
       },
-      group: 'shopify'
+      group: 'shopify',
     },
     {
       name: 'productTitle',
@@ -50,7 +50,7 @@ export default {
       type: 'string',
       readOnly: true,
       fieldset: '2up',
-      group: 'shopify'
+      group: 'shopify',
     },
     {
       name: 'variantTitle',
@@ -58,7 +58,7 @@ export default {
       type: 'string',
       readOnly: true,
       fieldset: '2up',
-      group: 'shopify'
+      group: 'shopify',
     },
     {
       name: 'productID',
@@ -66,7 +66,7 @@ export default {
       type: 'number',
       readOnly: true,
       fieldset: '2up',
-      group: 'shopify'
+      group: 'shopify',
     },
     {
       name: 'variantID',
@@ -74,7 +74,7 @@ export default {
       type: 'number',
       readOnly: true,
       fieldset: '2up',
-      group: 'shopify'
+      group: 'shopify',
     },
     {
       name: 'price',
@@ -82,7 +82,7 @@ export default {
       type: 'number',
       readOnly: true,
       fieldset: '2up',
-      group: 'shopify'
+      group: 'shopify',
     },
     {
       name: 'comparePrice',
@@ -90,7 +90,7 @@ export default {
       type: 'number',
       readOnly: true,
       fieldset: '2up',
-      group: 'shopify'
+      group: 'shopify',
     },
     {
       name: 'inStock',
@@ -98,7 +98,7 @@ export default {
       type: 'boolean',
       readOnly: true,
       fieldset: '2up',
-      group: 'shopify'
+      group: 'shopify',
     },
     {
       name: 'lowStock',
@@ -106,7 +106,7 @@ export default {
       type: 'boolean',
       readOnly: true,
       fieldset: '2up',
-      group: 'shopify'
+      group: 'shopify',
     },
     {
       name: 'sku',
@@ -114,7 +114,7 @@ export default {
       type: 'string',
       readOnly: true,
       fieldset: '2up',
-      group: 'shopify'
+      group: 'shopify',
     },
     {
       title: 'Options',
@@ -122,7 +122,7 @@ export default {
       type: 'array',
       of: [{ type: 'productOptionValue' }],
       readOnly: true,
-      group: 'shopify'
+      group: 'shopify',
     },
     {
       title: 'Draft Mode',
@@ -131,7 +131,7 @@ export default {
       readOnly: true,
       hidden: true,
       fieldset: '2up',
-      group: 'shopify'
+      group: 'shopify',
     },
     {
       name: 'wasDeleted',
@@ -140,8 +140,8 @@ export default {
       readOnly: true,
       hidden: true,
       fieldset: '2up',
-      group: 'shopify'
-    }
+      group: 'shopify',
+    },
   ],
   preview: {
     select: {
@@ -150,7 +150,7 @@ export default {
       wasDeleted: 'wasDeleted',
       title: 'title',
       variantTitle: 'variantTitle',
-      productTitle: 'productTitle'
+      productTitle: 'productTitle',
     },
     prepare({
       store,
@@ -158,7 +158,7 @@ export default {
       wasDeleted = false,
       title,
       variantTitle,
-      productTitle = '(missing product)'
+      productTitle = '(missing product)',
     }) {
       const getSubtitle = () => {
         if (title) {
@@ -170,11 +170,11 @@ export default {
 
       return {
         title:
-          (title ? title : variantTitle ?? store.title) +
+          (title ? title : (variantTitle ?? store.title)) +
           (wasDeleted ? ' (removed)' : '') +
           (isDraft ? ' (draft)' : ''),
-        subtitle: getSubtitle()
+        subtitle: getSubtitle(),
       }
-    }
-  }
+    },
+  },
 }

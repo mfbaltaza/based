@@ -23,13 +23,13 @@ const HeadSEO = ({ site = {}, page = {}, schema }) => {
 
   const metaTitle = replaceTemplateTags(
     page.seo?.metaTitle || site.seo?.metaTitle,
-    templateTags
+    templateTags,
   )
   const metaDesc = page.seo?.metaDesc || site.seo?.metaDesc
 
   const shareTitle = replaceTemplateTags(
     page.seo?.shareTitle || site.seo?.shareTitle,
-    templateTags
+    templateTags,
   )
   const shareDesc = page.seo?.shareDesc || site.seo?.shareDesc
   const shareGraphic =

@@ -8,13 +8,13 @@ class GoogleSearchResult extends React.PureComponent {
   static propTypes = {
     default: PropTypes.object,
     document: PropTypes.object,
-    width: PropTypes.number
+    width: PropTypes.number,
   }
 
   static defaultProps = {
     default: null,
     document: null,
-    width: 580
+    width: 580,
   }
 
   render() {
@@ -24,12 +24,12 @@ class GoogleSearchResult extends React.PureComponent {
     const templateTags = [
       {
         tag: '{{page_title}}',
-        value: document.title
+        value: document.title,
       },
       {
         tag: '{{site_title}}',
-        value: defaultSEO?.siteTitle
-      }
+        value: defaultSEO?.siteTitle,
+      },
     ]
 
     const url = assemblePageUrl({ document, domain: defaultSEO?.siteURL })
@@ -37,7 +37,7 @@ class GoogleSearchResult extends React.PureComponent {
 
     const metaTitle = replaceTemplateTags(
       seo?.metaTitle || defaultSEO?.metaTitle,
-      templateTags
+      templateTags,
     )
     const metaDesc = seo?.metaDesc || defaultSEO?.metaDesc
 

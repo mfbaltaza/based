@@ -108,7 +108,7 @@ export default async function send(req, res) {
     comparePrice: variants[0].compare_at_price * 100,
     sku: variants[0].sku || '',
     inStock: variants.some(
-      (v) => v.inventory_quantity > 0 || v.inventory_policy === 'continue'
+      (v) => v.inventory_quantity > 0 || v.inventory_policy === 'continue',
     ),
     lowStock:
       variants.reduce((a, b) => a + (b.inventory_quantity || 0), 0) <= 10,
@@ -186,7 +186,7 @@ export default async function send(req, res) {
 
   // See if our metafield exists
   const previousSync = shopifyProduct.data?.metafields.find(
-    (mf) => mf.key === 'product_sync'
+    (mf) => mf.key === 'product_sync',
   )
 
   // Metafield found
@@ -254,7 +254,7 @@ export default async function send(req, res) {
 
   // patch (update) title & slug if none has been set
   stx = stx.patch(`product-${id}`, (patch) =>
-    patch.setIfMissing({ title: title })
+    patch.setIfMissing({ title: title }),
   )
 
   // patch (update) productHero module if none has been set
@@ -267,7 +267,7 @@ export default async function send(req, res) {
           active: true,
         },
       ],
-    })
+    }),
   )
 
   // create variant if doesn't exist & patch (update) variant with core shopify data
@@ -275,7 +275,7 @@ export default async function send(req, res) {
     stx = stx.createIfNotExists(variant)
     stx = stx.patch(variant._id, (patch) => patch.set(productVariantFields[i]))
     stx = stx.patch(variant._id, (patch) =>
-      patch.setIfMissing({ title: productVariantFields[i].variantTitle })
+      patch.setIfMissing({ title: productVariantFields[i].variantTitle }),
     )
   })
 
@@ -283,7 +283,7 @@ export default async function send(req, res) {
   const currentVariants = await sanity.fetch(
     `*[_type == "productVariant" && productID == ${id}]{
       _id
-    }`
+    }`,
   )
 
   // mark deleted variants

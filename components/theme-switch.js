@@ -21,7 +21,7 @@ const ThemeSwitch = () => {
   // store our current and next theme objects (will be first theme, if undefined)
   const currentIndex = Math.max(
     0,
-    themes.findIndex((t) => t.name === theme)
+    themes.findIndex((t) => t.name === theme),
   )
 
   const nextTheme = themes[(currentIndex + 1) % themes.length]

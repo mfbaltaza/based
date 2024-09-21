@@ -48,13 +48,13 @@ const ProductOption = ({
           })
 
           const isActive = activeVariant.options.some(
-            (opt) => opt.position === option.position && opt.value === value
+            (opt) => opt.position === option.position && opt.value === value,
           )
 
           const withActiveOptions = [...currentOpt, ...otherOpts]
 
           const hasVariants = variants.find((variant) =>
-            variant.options.every((opt) => hasObject(withActiveOptions, opt))
+            variant.options.every((opt) => hasObject(withActiveOptions, opt)),
           )
 
           const inStock = variants.find((variant) => {
@@ -62,7 +62,7 @@ const ProductOption = ({
               return (
                 variant.inStock &&
                 variant.options.every((opt) =>
-                  hasObject(withActiveOptions, opt)
+                  hasObject(withActiveOptions, opt),
                 )
               )
             } else {
@@ -105,11 +105,11 @@ const ProductOption = ({
 // handle option changes
 const changeOption = (name, value, variants, activeVariant, changeCallback) => {
   const newOptions = activeVariant.options.map((opt) =>
-    opt.name === name ? { ...opt, value: value } : opt
+    opt.name === name ? { ...opt, value: value } : opt,
   )
 
   const newVariant = variants.find((variant) =>
-    variant.options.every((opt) => hasObject(newOptions, opt))
+    variant.options.every((opt) => hasObject(newOptions, opt)),
   )
 
   if (newVariant && changeCallback) {

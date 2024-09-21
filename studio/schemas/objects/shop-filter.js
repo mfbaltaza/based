@@ -6,14 +6,14 @@ export default {
   type: 'object',
   description: 'Display a filter drawer on shop collection pages',
   options: {
-    collapsible: true
+    collapsible: true,
   },
   fields: [
     {
       title: 'Enable Filtering?',
       name: 'isActive',
       type: 'boolean',
-      initialValue: false
+      initialValue: false,
     },
     {
       title: 'Filter Groups',
@@ -33,15 +33,15 @@ export default {
               options: {
                 list: [
                   { title: 'Default', value: ' ' },
-                  { title: 'Button Grid', value: 'grid' }
-                ]
+                  { title: 'Button Grid', value: 'grid' },
+                ],
               },
-              initialValue: ' '
+              initialValue: ' ',
             },
             {
               title: 'Title',
               name: 'title',
-              type: 'string'
+              type: 'string',
             },
             {
               title: 'Slug',
@@ -52,13 +52,13 @@ export default {
                 source: (_, context) => context.parent.title,
                 isUnique: (slug, context) => {
                   const otherGroupSlugs = context.document.filter.groups
-                    .filter(g => g._key !== context.parent._key)
-                    .map(g => g.slug.current)
+                    .filter((g) => g._key !== context.parent._key)
+                    .map((g) => g.slug.current)
 
                   return ![...otherGroupSlugs, 'sort'].includes(slug)
                 },
-                maxLength: 15
-              }
+                maxLength: 15,
+              },
             },
             {
               title: 'Associated Filters',
@@ -71,35 +71,35 @@ export default {
                   to: [{ type: 'filter' }],
                   options: {
                     filter: ({ document }) => {
-                      const addedFilters = document.filter.groups.flatMap(g =>
-                        g.options.map(p => p._ref).filter(Boolean)
+                      const addedFilters = document.filter.groups.flatMap((g) =>
+                        g.options.map((p) => p._ref).filter(Boolean),
                       )
 
                       return {
                         filter: '!(_id in $ids)',
                         params: {
-                          ids: addedFilters
-                        }
+                          ids: addedFilters,
+                        },
                       }
-                    }
-                  }
-                }
+                    },
+                  },
+                },
               ],
-              validation: Rule => Rule.unique()
-            }
+              validation: (Rule) => Rule.unique(),
+            },
           ],
           preview: {
             select: {
-              title: 'title'
+              title: 'title',
             },
             prepare({ title }) {
               return {
-                title: title
+                title: title,
               }
-            }
-          }
-        }
-      ]
-    }
-  ]
+            },
+          },
+        },
+      ],
+    },
+  ],
 }

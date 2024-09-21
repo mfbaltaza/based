@@ -53,7 +53,7 @@ export async function getStaticProps({ preview, previewData }) {
     {
       active: preview,
       token: previewData?.token,
-    }
+    },
   )
 
   return {

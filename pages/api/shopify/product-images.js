@@ -16,7 +16,7 @@ export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*')
   res.setHeader(
     'Access-Control-Allow-Headers',
-    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version',
   )
 
   const {
@@ -47,7 +47,7 @@ export default async function handler(req, res) {
           ${queries.imageMeta}
         }
       }
-    }`
+    }`,
   )
 
   // Check if we have more than one photo set or, one set for variants
@@ -60,7 +60,7 @@ export default async function handler(req, res) {
     const optName = set.forOption?.split(':')[0]
     const optValue = set.forOption?.split(':')[1]
     const newVariants = product.variants.filter((v) =>
-      v.options.some((opt) => opt.name === optName && opt.value === optValue)
+      v.options.some((opt) => opt.name === optName && opt.value === optValue),
     )
 
     return {

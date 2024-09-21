@@ -9,17 +9,17 @@ export default {
     {
       title: 'Title',
       name: 'title',
-      type: 'string'
+      type: 'string',
     },
     {
       title: 'Content',
       name: 'content',
-      type: 'simplePortableText'
-    }
+      type: 'simplePortableText',
+    },
   ],
   preview: {
     select: {
-      title: 'title'
-    }
-  }
+      title: 'title',
+    },
+  },
 }

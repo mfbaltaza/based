@@ -10,13 +10,13 @@ export default {
         headline: 'Important',
         message:
           'This displays an "implied consent" cookie notice to users to help comply with GDPR laws. It is strongly encouraged to include a link to your cookie usage and policies.',
-        tone: 'caution'
-      }
+        tone: 'caution',
+      },
     },
     {
       title: 'Enable Cookie Consent?',
       name: 'enabled',
-      type: 'boolean'
+      type: 'boolean',
     },
     {
       title: 'Message',
@@ -24,7 +24,7 @@ export default {
       type: 'text',
       rows: 2,
       description: 'Your cookie consent message',
-      hidden: ({ parent }) => !parent.enabled
+      hidden: ({ parent }) => !parent.enabled,
     },
     {
       title: 'Link',
@@ -32,14 +32,14 @@ export default {
       type: 'reference',
       to: [{ type: 'page' }],
       description: 'Show a link to "Learn More" about your cookie policy',
-      hidden: ({ parent }) => !parent.enabled
-    }
+      hidden: ({ parent }) => !parent.enabled,
+    },
   ],
   preview: {
     prepare() {
       return {
-        title: 'Cookie Consent Settings'
+        title: 'Cookie Consent Settings',
       }
-    }
-  }
+    },
+  },
 }

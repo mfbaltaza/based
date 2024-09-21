@@ -29,10 +29,10 @@ const Collection = ({ data = {} }) => {
   const collectionItems = useRef([])
 
   const [hasPagination, setHasPagination] = useState(
-    paginationLimit > 0 && products.length > paginationLimit
+    paginationLimit > 0 && products.length > paginationLimit,
   )
   const [currentCount, setCurrentCount] = useState(
-    hasPagination ? paginationLimit : products.length
+    hasPagination ? paginationLimit : products.length,
   )
 
   const filterGroups = filter.groups ?? []
@@ -62,7 +62,7 @@ const Collection = ({ data = {} }) => {
 
   // calculate our filters
   const currentFilters = activeParams.filter(
-    (f) => !['page', 'sort'].includes(f.name)
+    (f) => !['page', 'sort'].includes(f.name),
   )
   const activeFilters = currentFilters.map((filter) => {
     const validOptions = filterGroups
@@ -79,7 +79,7 @@ const Collection = ({ data = {} }) => {
         ...new Set(
           currentOptions
             .filter(Boolean)
-            .filter((f) => validOptions?.includes(f))
+            .filter((f) => validOptions?.includes(f)),
         ),
       ],
     }
@@ -105,7 +105,7 @@ const Collection = ({ data = {} }) => {
 
       setCurrentParams(newFilters)
     },
-    [activeParams]
+    [activeParams],
   )
 
   // handle load more
@@ -113,7 +113,7 @@ const Collection = ({ data = {} }) => {
     const newCount = clampRange(
       currentCount + paginationLimit,
       1,
-      orderedProducts.length
+      orderedProducts.length,
     )
 
     const newPage = Math.ceil(newCount / paginationLimit)
@@ -225,7 +225,7 @@ const Collection = ({ data = {} }) => {
                     activeFilters.map((filter) => ({
                       name: filter.name,
                       value: null,
-                    }))
+                    })),
                   )
                 }
               >
@@ -264,7 +264,7 @@ const useFilterAndSort = (products, filters, sort) => {
   const filterCombos = useMemo(
     () =>
       cartesian(...filters.filter((f) => f.values.length).map((f) => f.values)),
-    [filters]
+    [filters],
   )
 
   const filteredProducts = useMemo(
@@ -277,7 +277,7 @@ const useFilterAndSort = (products, filters, sort) => {
           return hasCombo
         })
       }),
-    [filters]
+    [filters],
   )
 
   switch (sort) {

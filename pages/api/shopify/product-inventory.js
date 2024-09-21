@@ -55,7 +55,7 @@ export default async function send(req, res) {
       (v) =>
         v.inventory_quantity > 0 ||
         v.inventory_policy === 'continue' ||
-        v.inventory_management === null
+        v.inventory_management === null,
     ),
     lowStock:
       variants.reduce((a, b) => a + (b.inventory_quantity || 0), 0) <= 10,

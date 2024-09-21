@@ -10,18 +10,18 @@ export default {
       title: 'Accordions',
       name: 'items',
       type: 'array',
-      of: [{ type: 'accordion' }]
-    }
+      of: [{ type: 'accordion' }],
+    },
   ],
   preview: {
     select: {
-      items: 'items'
+      items: 'items',
     },
     prepare({ items }) {
       return {
         title: 'Accordion List',
-        subtitle: `${items.length} item(s)`
+        subtitle: `${items.length} item(s)`,
       }
-    }
-  }
+    },
+  },
 }

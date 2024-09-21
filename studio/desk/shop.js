@@ -14,18 +14,18 @@ const collectionsMenu = S.listItem()
       .filter(
         `_type == "collection" && !(_id in [
       *[_type == "generalSettings"][0].shop._ref,
-    ]) && !(_id in path("drafts.**"))`
+    ]) && !(_id in path("drafts.**"))`,
       )
-      .child(documentId =>
+      .child((documentId) =>
         S.document()
           .documentId(documentId)
           .schemaType('collection')
-          .views(standardViews)
+          .views(standardViews),
       )
       .canHandleIntent(
         (intent, { type }) =>
-          ['create', 'edit'].includes(intent) && type === 'collection'
-      )
+          ['create', 'edit'].includes(intent) && type === 'collection',
+      ),
   )
 
 const productsMenu = S.listItem()
@@ -34,12 +34,12 @@ const productsMenu = S.listItem()
   .child(
     S.documentTypeList('product')
       .title('Products')
-      .child(documentId =>
+      .child((documentId) =>
         S.document()
           .documentId(documentId)
           .schemaType('product')
-          .views(standardViews)
-      )
+          .views(standardViews),
+      ),
   )
 
 const productVariantsMenu = S.listItem()
@@ -58,24 +58,24 @@ const productVariantsMenu = S.listItem()
               .menuItems(S.documentTypeList('product').getMenuItems())
               .filter('_type == $type')
               .params({ type: 'product' })
-              .child(productID =>
+              .child((productID) =>
                 S.documentList()
                   .title('Variants')
                   .menuItems(
-                    S.documentTypeList('productVariant').getMenuItems()
+                    S.documentTypeList('productVariant').getMenuItems(),
                   )
                   .filter('_type == $type && productID == $id')
                   .params({
                     type: 'productVariant',
-                    id: Number(productID.replace('product-', ''))
+                    id: Number(productID.replace('product-', '')),
                   })
-                  .child(documentId =>
+                  .child((documentId) =>
                     S.document()
                       .documentId(documentId)
                       .schemaType('productVariant')
-                      .views(standardViews)
-                  )
-              )
+                      .views(standardViews),
+                  ),
+              ),
           ),
         S.listItem()
           .title('Unattached Variants')
@@ -90,10 +90,10 @@ const productVariantsMenu = S.listItem()
               .filter('_type == $type && !(productID in $ids)')
               .params({
                 type: 'productVariant',
-                ids: productIDs
+                ids: productIDs,
               })
-          })
-      ])
+          }),
+      ]),
   )
 
 const filtersMenu = S.listItem()
@@ -102,15 +102,13 @@ const filtersMenu = S.listItem()
   .child(
     S.documentTypeList('filter')
       .title('Filters')
-      .child(documentId =>
-        S.document()
-          .documentId(documentId)
-          .schemaType('filter')
+      .child((documentId) =>
+        S.document().documentId(documentId).schemaType('filter'),
       )
       .canHandleIntent(
         (intent, { type }) =>
-          ['create', 'edit'].includes(intent) && type === 'filter'
-      )
+          ['create', 'edit'].includes(intent) && type === 'filter',
+      ),
   )
 
 // Our exported "Shop" Menu
@@ -125,7 +123,7 @@ export const shopMenu = S.listItem()
         productVariantsMenu,
         S.divider(),
         collectionsMenu,
-        filtersMenu
-      ])
+        filtersMenu,
+      ]),
   )
   .icon(ShoppingCart)

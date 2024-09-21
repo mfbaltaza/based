@@ -113,16 +113,8 @@ const getIcon = (name, color) => {
             strokeLinecap="round"
             strokeLinejoin="round"
           />
-          <path
-            d="M12.9129 9.99998H12.9204"
-            stroke="#1A1A1A"
-            strokeWidth="2"
-          />
-          <path
-            d="M7.07872 9.99998H7.0862"
-            stroke="#1A1A1A"
-            strokeWidth="2"
-          />
+          <path d="M12.9129 9.99998H12.9204" stroke="#1A1A1A" strokeWidth="2" />
+          <path d="M7.07872 9.99998H7.0862" stroke="#1A1A1A" strokeWidth="2" />
         </>
       )
     case 'United-Kingdom':
