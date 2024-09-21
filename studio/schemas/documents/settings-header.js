@@ -30,15 +30,8 @@ export default {
       }
     },
     {
-      title: 'Desktop Menu (Left)',
-      name: 'menuDesktopLeft',
-      type: 'reference',
-      to: [{ type: 'menu' }],
-      fieldset: 'desktop'
-    },
-    {
-      title: 'Desktop Menu (Right)',
-      name: 'menuDesktopRight',
+      title: 'Desktop Menu',
+      name: 'menuDesktop',
       type: 'reference',
       to: [{ type: 'menu' }],
       fieldset: 'desktop'

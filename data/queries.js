@@ -298,16 +298,8 @@ export const site = `
           ${page}
         }
       },
-      menuDesktopLeft->{
-        items[]{
-          ${link},
-          dropdownItems[]{
-            ${link}
-          },
-          featured[]->${product}
-        }
-      },
-      menuDesktopRight->{
+      menuDesktop->{
+      positionMenu,
         items[]{
           ${link},
           dropdownItems[]{
